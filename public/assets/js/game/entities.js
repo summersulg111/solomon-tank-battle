@@ -1,0 +1,9 @@
+export class Platform { constructor(data) { Object.assign(this, data); this.type = 'platform'; } render(ctx) { ctx.fillStyle = '#2a2a33'; ctx.fillRect(this.x, this.y, this.width, this.height); ctx.fillStyle = '#ff6b35'; ctx.fillRect(this.x, this.y, this.width, Math.min(4, this.height)); } }
+
+export class Trap { constructor(data) { Object.assign(this, data); this.type = 'trap'; } render(ctx) { ctx.fillStyle = '#e53935'; const count = Math.max(1, Math.floor(this.width / 20)); const w = this.width / count; ctx.beginPath(); for (let i = 0; i < count; i++) { const x = this.x + i * w; ctx.moveTo(x, this.y + this.height); ctx.lineTo(x + w / 2, this.y); ctx.lineTo(x + w, this.y + this.height); } ctx.fill(); } }
+
+export class Collectible { constructor(data) { Object.assign(this, data); this.collected = false; this.width ??= 18; this.height ??= 18; } render(ctx) { if (this.collected) return; ctx.fillStyle = '#ffd54a'; ctx.beginPath(); ctx.arc(this.x + this.width / 2, this.y + this.height / 2, Math.min(this.width, this.height) / 2, 0, Math.PI * 2); ctx.fill(); } }
+
+export class Checkpoint { constructor(data) { Object.assign(this, data); this.width ??= 28; this.height ??= 54; this.active = false; } render(ctx) { ctx.fillStyle = '#777'; ctx.fillRect(this.x, this.y, 4, this.height); ctx.fillStyle = this.active ? '#ff6b35' : '#777'; ctx.beginPath(); ctx.moveTo(this.x + 4, this.y); ctx.lineTo(this.x + 28, this.y + 10); ctx.lineTo(this.x + 4, this.y + 20); ctx.fill(); } }
+
+export class Goal { constructor(data) { Object.assign(this, data); this.width ??= 40; this.height ??= 70; } render(ctx) { ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3; ctx.strokeRect(this.x, this.y, this.width, this.height); ctx.fillStyle = '#e53935'; ctx.fillRect(this.x + 8, this.y + 8, this.width - 16, this.height - 16); } }
