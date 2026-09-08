@@ -1,0 +1,3 @@
+<?php
+session_set_cookie_params(['httponly'=>true,'samesite'=>'Lax','secure'=>!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off']); session_start();
+?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SOLOMON: DEVIL LEVEL</title><link rel="stylesheet" href="assets/css/main.css"></head><body><main class="hero"><div class="brand">SOLOMON</div><h1>DEVIL LEVEL</h1><p>Run. Jump. Survive. Master five original rage-platform levels.</p><a class="btn" href="game.php?level=1">PLAY NOW</a><div class="links"><a href="login.php">LOGIN</a><a href="register.php">REGISTER</a><a href="leaderboard.php">LEADERBOARD</a></div></main></body></html>
